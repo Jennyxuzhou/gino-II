@@ -8,22 +8,21 @@ const L_GINO = 81;
 const A_GINO = 84;
 const L_FUNGO = 90;
 const A_FUNGO = 63;
-
 const VEL_SALTO = 1000;
 const VEL_FUNGO = 100;
 const TASTO_SALTO = PP.key_codes.SPACE;
+
 let terreno;
 let gino;
 let fungo;
 let partita_finita = false;
 
 function crea_terreno(s) {
-    terreno = PP.shapes.rectangle_add(s,
-    LARGHEZZA / 2, Y_TERRENO + A_TERRENO / 2,
-    LARGHEZZA, A_TERRENO, TERRA, 1);
-    PP.physics.add(s, terreno, PP.physics.type.STATIC);
+terreno = PP.shapes.rectangle_add(s,
+LARGHEZZA / 2, Y_TERRENO + A_TERRENO / 2,
+LARGHEZZA, A_TERRENO, TERRA, 1);
+PP.physics.add(s, terreno, PP.physics.type.STATIC);
 }
-
 function crea_gino(s) {
 gino = PP.shapes.rectangle_add(s,
 X_GINO, Y_TERRENO - A_GINO / 2,
@@ -50,7 +49,6 @@ PP.physics.set_allow_gravity(fungo, false);
 PP.physics.set_velocity_x(fungo, -VEL_FUNGO);
 PP.physics.add_overlap_f(s, gino, fungo, fine_partita);
 }
-
 function fine_partita(s, a, b) {
 partita_finita = true;
 PP.physics.set_velocity_x(b, 0);
